@@ -1,10 +1,9 @@
 package com.josk.venom.user.management.dto;
 
+import com.josk.venom.user.management.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -14,5 +13,5 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String email;
-    private List<String> roles;
+    private Role role;
 }

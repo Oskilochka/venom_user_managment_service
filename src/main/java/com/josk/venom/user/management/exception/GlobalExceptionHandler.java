@@ -21,9 +21,9 @@ public class GlobalExceptionHandler {
         Map<String, Object> errors = new HashMap<>();
         List<String> errorMessages = new ArrayList<>();
 
-        exception.getBindingResult().getFieldErrors().forEach(e -> {
-            errorMessages.add(String.format("Field '%s': %s", e.getField(), e.getDefaultMessage()));
-        });
+        exception.getBindingResult().getFieldErrors().forEach(e -> errorMessages
+                .add(String.format("Field '%s': %s", e.getField(), e.getDefaultMessage()))
+        );
 
         errors.put("errors", errorMessages);
         errors.put("status", HttpStatus.BAD_REQUEST.value());
@@ -57,6 +57,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UsernameAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<Map<String, String>> handleUsernameAlreadyExists(UsernameAlreadyExistsException exception) {
+        Map<String, String> response = new HashMap<>();
+        response.put("error", exception.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(InvalidPasswordException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ResponseEntity<Map<String, String>> handleInvalidPassword(InvalidPasswordException exception) {
         Map<String, String> response = new HashMap<>();
         response.put("error", exception.getMessage());
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
