@@ -1,13 +1,14 @@
 package com.josk.venom.user.management.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserPasswordDto {
-    private String oldPassword;
-    private String newPassword;
+public class JwtAuthenticationResponseDto {
+    private String token;
 }
