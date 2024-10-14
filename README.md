@@ -10,7 +10,6 @@ This project is built with Spring Boot, Spring Security, and JWT for stateless a
 - **User Management**: Endpoints for user management such as fetching user details, updating user info, and deleting users.
 - **Auditing**: The project includes JPA auditing, which automatically tracks changes such as creation and update timestamps.
 - **Swagger Documentation**: API documentation is available via Swagger UI, making it easy to explore and test API endpoints.
-- **Docker Support**: The project is containerized with a `Dockerfile` to run the service in any Docker environment.
 - **Custom Logout Handling**: Implements custom logout functionality, including the ability to update the user's last logout time in the database.
 - **PostgreSQL Integration**: Uses PostgreSQL as the database for storing user information.
 
@@ -24,7 +23,6 @@ This project is built with Spring Boot, Spring Security, and JWT for stateless a
 - **Lombok**: To reduce boilerplate code for POJOs (Plain Old Java Objects).
 - **JPA**: For database interaction and persistence.
 - **Hibernate**: As the ORM (Object-Relational Mapping) tool.
-- **Docker**: For containerization of the service.
 
 ## Getting Started
 
@@ -84,19 +82,6 @@ http://localhost:8080/swagger-ui/index.html
 
 - After registration, use the /api/v1/auth/login endpoint to authenticate and obtain a JWT token.
 - Include the token in the Authorization header as a Bearer token when making requests to protected routes.
-
-### Docker
-1. **Build Docker Image**
-
-You can build a Docker image for this service using the provided Dockerfile.
-```bash
-docker build -t user-management-service .
-```
-2. **Run Docker Container**
-
-```bash
-docker run -p 8080:8080 user-management-service
-```
 
 ### Security
 - JWT Expiration: Tokens are configured with an expiration time (e.g., 24 hours). Once expired, the token is no longer valid, and the user will need to log in again.
